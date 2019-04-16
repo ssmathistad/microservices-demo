@@ -68,7 +68,7 @@
         },
         "WeaveworksEcsAmiIds": {
             "us-east-1": {
-                "ImageId": "ami-eca289fb"
+                "ImageId": "ami-7b692804"
             },
             "us-east-2": {
                 "ImageId": "ami-446f3521"
@@ -129,7 +129,7 @@
         "EcsInstanceType": {
             "Type": "String",
             "Description": "Type of the EC2 instance(s) to deploy",
-            "Default": "t2.xlarge",
+            "Default": "t2.large",
             "AllowedValues": [
                 "t2.micro",
                 "t2.small",
@@ -170,7 +170,7 @@
         "Scale": {
             "Type": "Number",
             "Description": "Size of ECS cluster",
-            "Default": "4"
+            "Default": "2"
         },
         "KeyName": {
             "Type": "AWS::EC2::KeyPair::KeyName",
@@ -280,7 +280,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "CartsTask"
                 }
@@ -337,7 +337,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "CatalogueTask"
                 }
@@ -418,7 +418,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "FrontEndTask"
                 }
@@ -458,7 +458,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "UserTask"
                 }
@@ -544,7 +544,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "OrdersTask"
                 }
@@ -584,7 +584,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "PaymentTask"
                 }
@@ -629,7 +629,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "QueueMasterTask"
                 }
@@ -701,7 +701,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "ShippingTask"
                 }
@@ -1085,6 +1085,7 @@
                 "ManagedPolicyArns": [
                     "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
                 ],
+                "PermissionsBoundary": "arn:aws:iam::774051255656:policy/Developer",
                 "Policies": [{
                     "PolicyName": "ClusterInstanceRole",
                     "PolicyDocument": {
@@ -1270,7 +1271,7 @@
                                     "Fn::Join": [
                                         "/", [
                                             "https://github.com/weaveworks/weave/releases/download",
-                                            "v1.8.0",
+                                            "v2.0.4",
                                             "weave"
                                         ]
                                     ]
@@ -1282,7 +1283,7 @@
                                     "Fn::Join": [
                                         "/", [
                                             "https://github.com/weaveworks/scope/releases/download",
-                                            "v1.1.0",
+                                            "v1.6.4",
                                             "scope"
                                         ]
                                     ]
