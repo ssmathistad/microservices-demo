@@ -68,31 +68,37 @@
         },
         "WeaveworksEcsAmiIds": {
             "us-east-1": {
-                "ImageId": "ami-eca289fb"
+                "ImageId": "ami-7b692804"
             },
             "us-east-2": {
-                "ImageId": "ami-446f3521"
+                "ImageId": "ami-6a0b350f"
             },
             "us-west-1": {
-                "ImageId": "ami-9fadf8ff"
+                "ImageId": "ami-a4db3fc7"
             },
             "us-west-2": {
-                "ImageId": "ami-7abc111a"
+                "ImageId": "ami-12c98a6a"
             },
             "eu-west-1": {
-                "ImageId": "ami-a1491ad2"
+                "ImageId": "ami-b3bab7ca"
+            },
+            "eu-west-2": {
+                "ImageId": "ami-47846a20"
             },
             "eu-central-1": {
-                "ImageId": "ami-54f5303b"
+                "ImageId": "ami-7f211294"
             },
             "ap-northeast-1": {
-                "ImageId": "ami-9cd57ffd"
+                "ImageId": "ami-2a8c4355"
             },
             "ap-southeast-1": {
-                "ImageId": "ami-a900a3ca"
+                "ImageId": "ami-b00304cc"
             },
             "ap-southeast-2": {
-                "ImageId": "ami-5781be34"
+                "ImageId": "ami-c7c41ba5"
+            },
+            "ca-central-1": {
+                "ImageId": "ami-41028125"
             }
         },
         "SqlImporterAmiIds": {
@@ -129,7 +135,7 @@
         "EcsInstanceType": {
             "Type": "String",
             "Description": "Type of the EC2 instance(s) to deploy",
-            "Default": "t2.xlarge",
+            "Default": "t2.large",
             "AllowedValues": [
                 "t2.micro",
                 "t2.small",
@@ -170,7 +176,7 @@
         "Scale": {
             "Type": "Number",
             "Description": "Size of ECS cluster",
-            "Default": "4"
+            "Default": "2"
         },
         "KeyName": {
             "Type": "AWS::EC2::KeyPair::KeyName",
@@ -280,7 +286,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "CartsTask"
                 }
@@ -337,7 +343,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "CatalogueTask"
                 }
@@ -418,7 +424,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "FrontEndTask"
                 }
@@ -458,7 +464,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "UserTask"
                 }
@@ -544,7 +550,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "OrdersTask"
                 }
@@ -584,7 +590,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "PaymentTask"
                 }
@@ -629,7 +635,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "QueueMasterTask"
                 }
@@ -701,7 +707,7 @@
                 "Cluster": {
                     "Ref": "EcsCluster"
                 },
-                "DesiredCount": 3,
+                "DesiredCount": 1,
                 "TaskDefinition": {
                     "Ref": "ShippingTask"
                 }
@@ -1085,6 +1091,7 @@
                 "ManagedPolicyArns": [
                     "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
                 ],
+                "PermissionsBoundary": "arn:aws:iam::774051255656:policy/Developer",
                 "Policies": [{
                     "PolicyName": "ClusterInstanceRole",
                     "PolicyDocument": {
@@ -1270,7 +1277,7 @@
                                     "Fn::Join": [
                                         "/", [
                                             "https://github.com/weaveworks/weave/releases/download",
-                                            "v1.8.0",
+                                            "v2.0.4",
                                             "weave"
                                         ]
                                     ]
@@ -1282,7 +1289,7 @@
                                     "Fn::Join": [
                                         "/", [
                                             "https://github.com/weaveworks/scope/releases/download",
-                                            "v1.1.0",
+                                            "v1.6.4",
                                             "scope"
                                         ]
                                     ]
