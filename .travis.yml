@@ -1,5 +1,5 @@
+script: 
+  - "docker build -t chico ."
+services: 
+  - docker
 sudo: required
-services:
-- docker
-script:
-- docker build -t chico .
